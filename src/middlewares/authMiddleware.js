@@ -1,7 +1,6 @@
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../../config");
 
-
 const authMiddleware = (req, res, next) => {
   let token = req.header("Authorization");
 
@@ -10,10 +9,10 @@ const authMiddleware = (req, res, next) => {
   }
 
   try {
-    token = req.header("Authorization").split(' ')[1];
+    token = req.header("Authorization").split(" ")[1];
     const decoded = jwt.verify(token, JWT_SECRET);
     req.user = decoded;
-    if(decoded.role === 101) {
+    if (decoded.role === "admin") {
       req.currentUserAdmin = true;
     }
     next();
