@@ -19,13 +19,14 @@ const UserSchema = mongoose.Schema(
       required: true,
     },
     group: {
-      type: String,
+      type: mongoose.Types.ObjectId,
+      ref: "Groups",
       required: true,
     },
     role: {
       type: String,
-      default: 'student',
-      enum:['student', 'teacher', 'admin'] 
+      default: "student",
+      enum: ["student", "teacher", "admin"],
     },
     profilePicture: {
       type: Object,
@@ -38,7 +39,7 @@ const UserSchema = mongoose.Schema(
     accessExam: {
       type: Boolean,
       default: false,
-    }
+    },
   },
   { timestamps: true }
 );

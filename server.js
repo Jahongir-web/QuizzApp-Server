@@ -28,9 +28,6 @@ app.get('/', (req, res)=> {
 })
 
 
-mongoose.connect(MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(()=> {
+mongoose.connect(MONGODB_URI).then(()=> {
   app.listen(PORT, ()=> console.log(`Server started on port: ${PORT}`))
 }).catch((error) => console.log(error))
