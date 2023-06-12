@@ -4,7 +4,7 @@ const Joi = require("joi");
 const schema = new Schema(
   {
     name: { type: String, required: true },
-    company: { type: String, required: true },
+    company: { type: String, required: true, enum: ["Webstar", "Mars", "Merit"] },
   },
   { timestamps: true }
 );

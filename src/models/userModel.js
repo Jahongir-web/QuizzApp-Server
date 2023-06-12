@@ -21,7 +21,6 @@ const UserSchema = mongoose.Schema(
     group: {
       type: mongoose.Types.ObjectId,
       ref: "Groups",
-      required: true,
     },
     role: {
       type: String,
