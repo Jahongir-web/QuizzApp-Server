@@ -34,13 +34,13 @@ const authCtrl = {
     try {
       const existingUser = await Users.findOne({ email });
       if (!existingUser) {
-        return res.status(404).json({ message: "User not found!" });
+        return res.status(404).json({ message: "Email or password is incorrect!" });
       }
 
       const isPasswordCorrect = await bcrypt.compare(req.body.password, existingUser.password);
 
       if (!isPasswordCorrect) {
-        return res.status(400).json({ message: "Invalid credentials!" });
+        return res.status(400).json({ message: "Email or password is incorrect!" });
       }
 
       const token = jwt.sign({ email: existingUser.email, id: existingUser._id, role: existingUser.role }, JWT_SECRET);

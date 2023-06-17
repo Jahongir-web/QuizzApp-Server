@@ -6,6 +6,12 @@ const quizCtrl = {
     const quiz = await Quiz.find();
     res.status(200).json({ message: "quiz list", quizzes: quiz });
   }),
+  getOneQuiz: catchErrorAsync(async (req, res) => {
+    const { id } = req.params;
+    // const quiz = await Quiz.findById(id).populate("categoryId");
+    // res.status(200).json({ message: "quiz list", quizzes: quiz });
+    const quiz = await Quiz.aggregate([{ $match: "" }]);
+  }),
   addQuiz: catchErrorAsync(async (req, res) => {
     const { error } = validation(req.body);
     if (error) return res.status(500).json({ message: error.details[0].message });

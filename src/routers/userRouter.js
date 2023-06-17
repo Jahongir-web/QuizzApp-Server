@@ -1,12 +1,11 @@
-const router = require("express").Router()
+const router = require("express").Router();
 
-const userCtrl = require("../controller/userCtrl")
+const userCtrl = require("../controller/userCtrl");
+const { authMiddleware } = require("../middlewares/authMiddleware");
 
-router.get("/:id", userCtrl.getUser)
-router.get("/", userCtrl.getAllUsers)
-router.put("/:id", userCtrl.updateUser)
-router.delete("/:id", userCtrl.deleteUser)
+router.get("/:id", authMiddleware, userCtrl.getUser);
+router.get("/", authMiddleware, userCtrl.getAllUsers);
+router.put("/:id", authMiddleware, userCtrl.updateUser);
+router.delete("/:id", authMiddleware, userCtrl.deleteUser);
 
-
-
-module.exports = router
+module.exports = router;
