@@ -25,6 +25,6 @@ const validationUpd = (data) => {
   }).validate(data);
 };
 
-const Question = mongoose.model("quizzis", schema);
+const Question = mongoose.model("Questions", schema);
 
 module.exports = { Question, validation, validationUpd };
