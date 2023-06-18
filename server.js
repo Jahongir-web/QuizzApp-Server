@@ -29,6 +29,6 @@ app.use("/api/user", authMiddleware, userRouter);
 
 app.get("/", (req, res) => res.send("Quizz app"));
 
-app.use(ErrorController);
+// app.use(ErrorController);
 
 module.exports = app;
