@@ -57,7 +57,7 @@ const userCtrl = {
             const img = await uploadedFile(profilePicture);
             req.body.profilePicture = img;
             if (user.profilePicture) {
-              await deleteFile(user.profilePicture.public_id);
+              await deleteFile(user.profilePicture?.public_id);
             }
           }
         }
@@ -82,7 +82,7 @@ const userCtrl = {
         // Delete images
         const deletedUser = await Users.findByIdAndDelete(id);
         if (deletedUser) {
-          if (deletedUser.profilePicture) {
+          if (deletedUser.profilePicture?.public_id) {
             await deleteFile(deletedUser.profilePicture.public_id);
           }
           return res.status(200).json("User deleted successfully!");
