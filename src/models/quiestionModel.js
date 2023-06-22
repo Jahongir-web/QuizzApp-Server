@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Joi = require("joi");
 
 const schema = new mongoose.Schema({
-  quizQuestion: { type: String, required: true, minLength: 10, maxLength: 999 },
+  quizQuestion: { type: String, required: true, minLength: 5, maxLength: 999 },
   correctAnswer: { type: String, required: true, minLength: 3, maxLength: 999 },
   choice1: { type: String, required: true, minLength: 1, maxLength: 999 },
   choice2: { type: String, required: true, minLength: 1, maxLength: 999 },

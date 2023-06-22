@@ -8,9 +8,7 @@ const authCtrl = {
     const { email } = req.body;
     try {
       const existingUser = await Users.findOne({ email });
-      if (existingUser) {
-        return res.status(400).json({ message: "User already exists!" });
-      }
+      if (existingUser) return res.status(400).json({ message: "User already exists!" });
 
       const hashedPassword = await bcrypt.hash(req.body.password, 12);
       req.body.password = hashedPassword;

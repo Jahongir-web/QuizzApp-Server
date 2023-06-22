@@ -1,7 +1,13 @@
 const { Schema, model } = require("mongoose");
 const Joi = require("joi");
 
-const schema = new Schema({ name: { type: String, required: true, maxLength: 255 } }, { timestamps: true });
+const schema = new Schema(
+  {
+    image: { type: Object, require: true },
+    name: { type: String, required: true, maxLength: 255 },
+  },
+  { timestamps: true }
+);
 
 const validation = (data) => {
   return Joi.object({
